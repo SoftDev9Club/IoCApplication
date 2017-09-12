@@ -31,15 +31,11 @@ namespace IoCApplication.Controllers
             container.Register<IService2, IoCService2>(IoCApplication.Models.CycleTimeOptions.singleton);
 
             // Prepare the first ResolveService object and do the ResolveService operation
-            ResolveService ResolveService1 = new ResolveService(container);
-            ResolveService1.DoCopy(); //---------------------------------------------------------------------
-            //Console.ReadLine();
-
+            ResolveService ResolveService1 = new ResolveService(container);            
             // Prepare the second ResolveService object and do the ResolveService operation
             ResolveService ResolveService2 = new ResolveService(container);
-            ResolveService2.DoCopy(); //---------------------------------------------------------------------
-            //ResolveService Console.ReadLine();
 
+            
             ViewBag.serviceTime1 = s1.Service1(); // -----------------------------------------------
             ViewBag.serviceTime2 = s2.Service2(); // -----------------------------------------------
             System.Threading.Thread.Sleep(5000);

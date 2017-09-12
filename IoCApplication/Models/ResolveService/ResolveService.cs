@@ -23,13 +23,6 @@ namespace IoCApplication.Models.ResolveService
           
         }
 
-        public void DoCopy()
-        {
-            //string stData = _service2.Read();
-           // Console.WriteLine(string.Format("Reader created on : {0}", _service2.GetCreatedOn().ToString()));
-          //  Console.WriteLine(string.Format("Writer created on : {0}", _service1.GetCreatedOn().ToString()));
-           // _service1.Write(stData);
-         //   Console.WriteLine("\n\n");
-        }
+        
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Reflection;
 
 namespace IoCApplication.Models.IoCContainer
@@ -42,10 +41,8 @@ namespace IoCApplication.Models.IoCContainer
                 return resolvedType.InstanceValue;
 
             // Try to construct the object
-            // Step-1: find the constructor (ideally first constructor if multiple constructos present for the type)
             ConstructorInfo ctorInfo = resolvedType.ResolvedType.GetConstructors().First();
-
-            // Step-2: find the parameters for the constructor and try to resolve those
+            
             List<ParameterInfo> paramsInfo = ctorInfo.GetParameters().ToList();
             List<object> resolvedParams = new List<object>();
             foreach (ParameterInfo param in paramsInfo)
@@ -55,7 +52,6 @@ namespace IoCApplication.Models.IoCContainer
                 resolvedParams.Add(res);
             }
 
-            // Step-3: using reflection invoke constructor to create the object--------------------------------
             object retObject = ctorInfo.Invoke(resolvedParams.ToArray());
 
             resolvedType.InstanceValue = retObject;

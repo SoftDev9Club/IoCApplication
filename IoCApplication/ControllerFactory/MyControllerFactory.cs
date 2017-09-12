@@ -9,14 +9,11 @@ using IoCApplication.Models.Implementation;
 using IoCApplication.Controllers;
 
 namespace IoCApplication.ControllerFactory
-{
-
-   
+{ 
     public class MyControllerFactory : IControllerFactory
     {
         public IController CreateController(RequestContext requestContext, string controllerName)
-        {
-           
+        {          
             if (controllerName.StartsWith("Home"))
             { 
             IService1 service1 = new IoCService1();
