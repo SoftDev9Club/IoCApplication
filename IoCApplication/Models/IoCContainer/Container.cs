@@ -11,7 +11,7 @@ namespace IoCApplication.Models.IoCContainer
 
         public void Register<T1, T2>()
         {
-            Register<T1, T2>(CycleTimeOptions.transient);
+            Register<T1, T2>(CycleTimeOptions.transient); // default
         }
 
         public void Register<T1, T2>(CycleTimeOptions CycleTimeOption)
@@ -38,7 +38,7 @@ namespace IoCApplication.Models.IoCContainer
             ResolvedTypeWithCycleTimeOptions resolvedType = IoCDictionary[typeToResolve];
 
             if (resolvedType.CycleTimeOption == CycleTimeOptions.singleton && resolvedType.InstanceValue != null)
-                return resolvedType.InstanceValue;
+                return resolvedType.InstanceValue; 
 
             // Try to construct the object
             ConstructorInfo constrInfo = resolvedType.ResolvedType.GetConstructors().First();

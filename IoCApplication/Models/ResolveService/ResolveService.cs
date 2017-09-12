@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using IoCApplication.Models.IoCContainer;
+﻿using IoCApplication.Models.IoCContainer;
 using IoCApplication.Models.Interface;
 
 
@@ -15,12 +11,11 @@ namespace IoCApplication.Models.ResolveService
         private IService2 _service2;
         
 
-        public ResolveService(Container container)
+        public ResolveService(Container container) 
         {
             _container = container;
             _service1 = _container.Resolve<IService1>();
-            _service2 = _container.Resolve<IService2>();
-          
+            _service2 = _container.Resolve<IService2>();        
         }
 
         
