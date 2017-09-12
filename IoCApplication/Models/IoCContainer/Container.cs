@@ -41,9 +41,9 @@ namespace IoCApplication.Models.IoCContainer
                 return resolvedType.InstanceValue;
 
             // Try to construct the object
-            ConstructorInfo ctorInfo = resolvedType.ResolvedType.GetConstructors().First();
+            ConstructorInfo constrInfo = resolvedType.ResolvedType.GetConstructors().First();
             
-            List<ParameterInfo> paramsInfo = ctorInfo.GetParameters().ToList();
+            List<ParameterInfo> paramsInfo = constrInfo.GetParameters().ToList();
             List<object> resolvedParams = new List<object>();
             foreach (ParameterInfo param in paramsInfo)
             {
@@ -52,8 +52,7 @@ namespace IoCApplication.Models.IoCContainer
                 resolvedParams.Add(res);
             }
 
-            object retObject = ctorInfo.Invoke(resolvedParams.ToArray());
-
+            object retObject = constrInfo.Invoke(resolvedParams.ToArray());
             resolvedType.InstanceValue = retObject;
 
             return retObject;

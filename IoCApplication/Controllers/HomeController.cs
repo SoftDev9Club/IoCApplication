@@ -21,7 +21,6 @@ namespace IoCApplication.Controllers
             this.s2 = s2;
         }
 
-
         public ActionResult Index()
         {
             // Create the container object
@@ -30,32 +29,15 @@ namespace IoCApplication.Controllers
             container.Register<IService1, IoCService1>(IoCApplication.Models.CycleTimeOptions.transient);
             container.Register<IService2, IoCService2>(IoCApplication.Models.CycleTimeOptions.singleton);
 
-            // Prepare the first ResolveService object and do the ResolveService operation
-            ResolveService ResolveService1 = new ResolveService(container);            
-            // Prepare the second ResolveService object and do the ResolveService operation
-            ResolveService ResolveService2 = new ResolveService(container);
-
+            //// Prepare the first ResolveService object and do the ResolveService operation
+            //ResolveService ResolveService1 = new ResolveService(container);            
+            //// Prepare the second ResolveService object and do the ResolveService operation
+            //ResolveService ResolveService2 = new ResolveService(container);
             
-            ViewBag.serviceTime1 = s1.Service1(); // -----------------------------------------------
-            ViewBag.serviceTime2 = s2.Service2(); // -----------------------------------------------
-            System.Threading.Thread.Sleep(5000);
-            ViewBag.serviceTime3 = s1.Service1(); // -----------------------------------------------
-            ViewBag.serviceTime4 = s2.Service2(); //
+            ViewBag.serviceTime1 = s1.Service1(); 
+            ViewBag.serviceTime2 = s2.Service2(); 
+           
             return View();
         }
-
-        //public ActionResult About()
-        //{
-        //    ViewBag.Message = "Your application description page.";
-
-        //    return View();
-        //}
-
-        //public ActionResult Contact()
-        //{
-        //    ViewBag.Message = "Your contact page.";
-
-        //    return View();
-        //}
     }
 }

@@ -27,7 +27,7 @@ namespace IoCApplication.Models
         public ResolvedTypeWithCycleTimeOptions(Type resolvedType, CycleTimeOptions CycleTimeOption)
         {
             ResolvedType = resolvedType;
-            CycleTimeOption = CycleTimeOption;
+            this.CycleTimeOption = CycleTimeOption;
             InstanceValue = null;
         }
     }

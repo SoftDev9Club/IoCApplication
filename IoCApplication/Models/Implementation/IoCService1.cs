@@ -10,7 +10,7 @@ namespace IoCApplication.Models.Implementation
     {
         private DateTime _createdOn;
 
-        public IoCService1() // Constructor
+        public IoCService1() 
         {
             _createdOn = DateTime.Now;
         }
