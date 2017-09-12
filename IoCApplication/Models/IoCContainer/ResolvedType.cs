@@ -6,23 +6,28 @@ using System.Web;
 
 namespace IoCApplication.Models
 {
-    public class ResolvedTypeWithLifeTimeOptions
+    public enum CycleTimeOptions
+    {
+        transient,
+        singleton
+    }
+    public class ResolvedTypeWithCycleTimeOptions
     {
         public Type ResolvedType { get; set; }
-        public LifeTimeOptions LifeTimeOption { get; set; }
+        public CycleTimeOptions CycleTimeOption { get; set; }
         public object InstanceValue { get; set; }
 
-        public ResolvedTypeWithLifeTimeOptions(Type resolvedType)
+        public ResolvedTypeWithCycleTimeOptions(Type resolvedType)
         {
             ResolvedType = resolvedType;
-            LifeTimeOption = LifeTimeOptions.transient;
+            CycleTimeOption = CycleTimeOptions.transient;
             InstanceValue = null;
         }
 
-        public ResolvedTypeWithLifeTimeOptions(Type resolvedType, LifeTimeOptions lifeTimeOption)
+        public ResolvedTypeWithCycleTimeOptions(Type resolvedType, CycleTimeOptions CycleTimeOption)
         {
             ResolvedType = resolvedType;
-            LifeTimeOption = lifeTimeOption;
+            CycleTimeOption = CycleTimeOption;
             InstanceValue = null;
         }
     }

@@ -1,5 +1,5 @@
 ﻿using IoCApplication.Models.Interface;
-using IoCApplication.Models.HighLevelModule;
+using IoCApplication.Models.ResolveService;
 using IoCApplication.Models.Implementation;
 using IoCApplication.Models.IoCContainer;
 using System;
@@ -27,8 +27,8 @@ namespace IoCApplication.Controllers
             // Create the container object
             Container container = new Container();
             // Register all the dependencies
-            container.Register<IService2, IoCService2>(LifeTimeOptions.singleton);
-            container.Register<IService1, IoCService1>(LifeTimeOptions.transient);
+            container.Register<IService1, IoCService1>(IoCApplication.Models.CycleTimeOptions.transient);
+            container.Register<IService2, IoCService2>(IoCApplication.Models.CycleTimeOptions.singleton);
 
             // Prepare the first ResolveService object and do the ResolveService operation
             ResolveService ResolveService1 = new ResolveService(container);
@@ -40,8 +40,11 @@ namespace IoCApplication.Controllers
             ResolveService2.DoCopy(); //---------------------------------------------------------------------
             //ResolveService Console.ReadLine();
 
-            //ViewBag.serviceTime1 = _s1.serviceCreatedOn; // -----------------------------------------------
-            //ViewBag.serviceTime2 = _s2.serviceCreatedOn; // -----------------------------------------------
+            ViewBag.serviceTime1 = s1.Service1(); // -----------------------------------------------
+            ViewBag.serviceTime2 = s2.Service2(); // -----------------------------------------------
+            System.Threading.Thread.Sleep(5000);
+            ViewBag.serviceTime3 = s1.Service1(); // -----------------------------------------------
+            ViewBag.serviceTime4 = s2.Service2(); //
             return View();
         }
 

@@ -8,20 +8,20 @@ namespace IoCApplication.Models.IoCContainer
 {
     public class Container
     {
-        private Dictionary<Type, ResolvedTypeWithLifeTimeOptions> IoCDictionary = new Dictionary<Type, ResolvedTypeWithLifeTimeOptions>();
+        private Dictionary<Type, ResolvedTypeWithCycleTimeOptions> IoCDictionary = new Dictionary<Type, ResolvedTypeWithCycleTimeOptions>();
 
         public void Register<T1, T2>()
         {
-            Register<T1, T2>(LifeTimeOptions.transient);
+            Register<T1, T2>(CycleTimeOptions.transient);
         }
 
-        public void Register<T1, T2>(LifeTimeOptions lifeTimeOption)
+        public void Register<T1, T2>(CycleTimeOptions CycleTimeOption)
         {
             if (IoCDictionary.ContainsKey(typeof(T1)))
             {
                 throw new Exception(string.Format("Type {0} already registered.", typeof(T1).FullName));
             }
-            ResolvedTypeWithLifeTimeOptions targetType = new ResolvedTypeWithLifeTimeOptions(typeof(T2), lifeTimeOption);
+            ResolvedTypeWithCycleTimeOptions targetType = new ResolvedTypeWithCycleTimeOptions(typeof(T2), CycleTimeOption);
             IoCDictionary.Add(typeof(T1), targetType);
         }
 
@@ -36,9 +36,9 @@ namespace IoCApplication.Models.IoCContainer
             if (!IoCDictionary.ContainsKey(typeToResolve))
                 throw new Exception(string.Format("Can't resolve {0}. Type is not registed.", typeToResolve.FullName));
 
-            ResolvedTypeWithLifeTimeOptions resolvedType = IoCDictionary[typeToResolve];
+            ResolvedTypeWithCycleTimeOptions resolvedType = IoCDictionary[typeToResolve];
 
-            if (resolvedType.LifeTimeOption == LifeTimeOptions.singleton && resolvedType.InstanceValue != null)
+            if (resolvedType.CycleTimeOption == CycleTimeOptions.singleton && resolvedType.InstanceValue != null)
                 return resolvedType.InstanceValue;
 
             // Try to construct the object

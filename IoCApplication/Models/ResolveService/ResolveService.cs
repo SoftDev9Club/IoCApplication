@@ -6,7 +6,7 @@ using IoCApplication.Models.IoCContainer;
 using IoCApplication.Models.Interface;
 
 
-namespace IoCApplication.Models.HighLevelModule
+namespace IoCApplication.Models.ResolveService
 {
     public class ResolveService
     {
