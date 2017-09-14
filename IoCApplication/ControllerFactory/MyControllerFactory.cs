@@ -6,7 +6,6 @@ using IoCApplication.Models.Interface;
 using IoCApplication.Models.Implementation;
 using IoCApplication.Controllers;
 using IoCApplication.Models.IoCContainer;
-using IoCApplication.Models.ResolveService;
 
 namespace IoCApplication.ControllerFactory
 { 

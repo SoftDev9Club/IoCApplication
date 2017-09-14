@@ -148,7 +148,6 @@
     </Compile>
     <Compile Include="Models\Interface\IService2.cs" />
     <Compile Include="Models\Interface\IService1.cs" />
-    <Compile Include="Models\ResolveService\ResolveService.cs" />
     <Compile Include="Models\Implementation\IoCService2.cs" />
     <Compile Include="Models\Implementation\IoCService1.cs" />
     <Compile Include="Models\IoCContainer\Container.cs" />
