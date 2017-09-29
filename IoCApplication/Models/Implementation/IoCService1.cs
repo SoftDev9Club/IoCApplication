@@ -1,5 +1,6 @@
 ﻿using IoCApplication.Models.Interface;
 using System;
+using System.Threading;
 
 namespace IoCApplication.Models.Implementation
 {
